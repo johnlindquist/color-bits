@@ -14,7 +14,8 @@ const App = () => {
   const [color, setColor] = useState(toBit(0xff0000, 24))
 
   const leftShift = "<<"
-  const rightShift = ">>"
+  const arithmeticRightShift = ">>"
+  const logicalRightShift = ">>>"
   const colorArray = [...color]
   const hexColor = (color => {
     let temp = parseInt(color, 2).toString(16)
@@ -36,25 +37,39 @@ const App = () => {
 
   const shiftLeft = () => {
     const newColor = parseInt(color, 2) << 1
-    setColor(toBit(newColor, 24))
+    let newBits = toBit(newColor, 24)
+
+    if (newBits.length > 24) newBits = newBits.substr(-24)
+
+    setColor(newBits)
   }
-  const shiftRight = () => {
-    const newColor = parseInt(color, 2) >> 1
-    setColor(toBit(newColor, 24))
+  const logicalShiftRight = () => {
+    let newColor = parseInt(color, 2) >>> 1
+    let newBits = toBit(newColor, 24)
+
+    if (newBits.length > 24) newBits = newBits.substr(-24)
+
+    setColor(newBits)
+  }
+  const arithmeticShiftRight = () => {
+    let newColor = parseInt(color, 2) >> 1
+    let newBits = newColor.toString(2)
+
+    if (newBits.length < 24)
+      newBits =
+        Array.from({ length: 24 - newBits.length })
+          .map(() => color[0])
+          .join("") + newBits
+
+    setColor(newBits)
   }
   const invert = () => {
-    let bits = parseInt(color.map(([, bit]) => bit).join(""), 2)
-    console.log({ bits })
+    const newColor = ~parseInt(color, 2)
+    let newBits = toBit(newColor, 24)
 
-    let newBits = ~bits
-    newBits < 0 && (newBits += 256)
+    if (newBits.length > 24) newBits = newBits.substr(-24)
 
-    console.log({ newBits })
-    const stringBits = toBit(newBits, 8).substring(2)
-    console.log({ stringBits })
-    const newNotes = color.map(([note], i) => [note, +stringBits[i]])
-    // console.log(newNotes)
-    setColor(newNotes)
+    setColor(newBits)
   }
 
   return (
@@ -72,7 +87,8 @@ const App = () => {
           />
         )
       })}
-      <button onClick={shiftRight}>{rightShift}</button>
+      <button onClick={logicalShiftRight}>{logicalRightShift}</button>
+      <button onClick={arithmeticShiftRight}>{arithmeticRightShift}</button>
       <div>
         <button onClick={invert}>~</button>
       </div>
