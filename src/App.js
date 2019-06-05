@@ -14,8 +14,8 @@ const App = () => {
   const [color, setColor] = useState(toBit(0xff0000, 24))
 
   const leftShift = "<<"
-  const arithmeticRightShift = ">>"
-  const logicalRightShift = ">>>"
+  const signPropagatingRightShift = ">>"
+  const zeroFillRightShift = ">>>"
   const colorArray = [...color]
   const hexColor = (color => {
     let temp = parseInt(color, 2).toString(16)
@@ -43,7 +43,7 @@ const App = () => {
 
     setColor(newBits)
   }
-  const logicalShiftRight = () => {
+  const zeroFillShiftRight = () => {
     let newColor = parseInt(color, 2) >>> 1
     let newBits = toBit(newColor, 24)
 
@@ -51,7 +51,7 @@ const App = () => {
 
     setColor(newBits)
   }
-  const arithmeticShiftRight = () => {
+  const signPropagatingShiftRight = () => {
     let newColor = parseInt(color, 2) >> 1
     let newBits = newColor.toString(2)
 
@@ -87,8 +87,10 @@ const App = () => {
           />
         )
       })}
-      <button onClick={logicalShiftRight}>{logicalRightShift}</button>
-      <button onClick={arithmeticShiftRight}>{arithmeticRightShift}</button>
+      <button onClick={zeroFillShiftRight}>{zeroFillRightShift}</button>
+      <button onClick={signPropagatingShiftRight}>
+        {signPropagatingRightShift}
+      </button>
       <div>
         <button onClick={invert}>~</button>
       </div>
