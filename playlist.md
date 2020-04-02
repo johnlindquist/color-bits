@@ -26,3 +26,9 @@
 [https://github.com/johnlindquist/color-bits/tree/that-should-work-better](https://github.com/johnlindquist/color-bits/tree/that-should-work-better) 
 
 [https://codesandbox.io/embed/github/johnlindquist/color-bits/tree/that-should-work-better/?module=/src/index.js](https://codesandbox.io/embed/github/johnlindquist/color-bits/tree/that-should-work-better/?module=/src/index.js)
+
+ ## Create a Vscode Extension 
+
+[https://github.com/johnlindquist/color-bits/tree/create-a-vscode-extension](https://github.com/johnlindquist/color-bits/tree/create-a-vscode-extension) 
+
+[https://codesandbox.io/embed/github/johnlindquist/color-bits/tree/create-a-vscode-extension/?module=/src/index.js](https://codesandbox.io/embed/github/johnlindquist/color-bits/tree/create-a-vscode-extension/?module=/src/index.js)
