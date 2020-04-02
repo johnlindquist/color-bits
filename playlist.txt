@@ -1,0 +1,3 @@
+Eat a Potato
+https://github.com/johnlindquist/color-bits/tree/eat-a-potato
+https://codesandbox.io/embed/github/johnlindquist/color-bits/tree/eat-a-potato/?module=/src/index.js
